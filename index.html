@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="আমাদের রাস্তা — এলাকার রাস্তা ও নাগরিক সমস্যার রিপোর্টিং ফ্রন্টএন্ড ডেমো" />
+  <title>আমাদের রাস্তা — Better Road, Better Tomorrow</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="আমাদের রাস্তা হোম">
+      <span class="brand-mark"><span>📍</span></span>
+      <span><strong>Amader Rasta</strong><small>Better Road, Better Tomorrow</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="প্রধান নেভিগেশন">
+      <a href="#home">হোম</a><a href="#problems">সমস্যা</a><a href="#map">ম্যাপ</a><a href="#report">রিপোর্ট</a><a href="#stats">পরিসংখ্যান</a><a href="#about">সম্পর্কে</a>
+    </nav>
+    <div class="top-actions"><button class="icon-btn" id="searchBtn" title="খুঁজুন">⌕</button><button class="avatar" id="profileBtn" title="প্রোফাইল">👤</button><button class="menu-btn" id="menuBtn" aria-label="মেনু">☰</button></div>
+  </header>
+
+  <main id="home">
+    <section class="hero section-pad">
+      <div class="hero-copy">
+        <span class="eyebrow">নাগরিক উদ্যোগ • Sirajganj</span>
+        <h1>আপনার এলাকার<br><em>সমস্যা তুলে ধরুন</em></h1>
+        <p>রাস্তা, ড্রেন, ব্রিজ, রাস্তার আলোর সমস্যাগুলো জানান এবং অন্যদের রিপোর্টে মতামত দিন।</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#report">✎ সমস্যা রিপোর্ট করুন</a><a class="btn btn-ghost" href="#problems">এলাকার সমস্যা দেখুন</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="hill h1"></div><div class="hill h2"></div>
+        <div class="road"><span></span><span></span><span></span></div>
+        <div class="tree t1">🌳</div><div class="tree t2">🌳</div><div class="tree t3">🌲</div>
+      </div>
+    </section>
+
+    <section class="stats-strip section-pad" aria-label="সারসংক্ষেপ">
+      <div><span class="stat-icon red">⚠</span><strong id="totalCount">128</strong><small>মোট সমস্যা</small></div>
+      <div><span class="stat-icon green">✓</span><strong id="resolvedCount">47</strong><small>সমাধান হয়েছে</small></div>
+      <div><span class="stat-icon orange">◷</span><strong id="progressCount">18</strong><small>কাজ চলছে</small></div>
+      <div><span class="stat-icon blue">📣</span><strong id="todayCount">36</strong><small>এই মাসে রিপোর্ট</small></div>
+    </section>
+
+    <section class="section-pad" id="problems">
+      <div class="section-head"><div><span class="eyebrow">সবার জন্য</span><h2>সাম্প্রতিক সমস্যা</h2></div><a href="#all" id="viewAll">সব দেখুন →</a></div>
+      <div class="problem-grid" id="problemGrid"></div>
+    </section>
+
+    <section class="section-pad map-section" id="map">
+      <div class="section-head"><div><span class="eyebrow">লোকেশন ভিত্তিক</span><h2>সমস্যার মানচিত্র</h2><p>মানচিত্রে মার্কারে ক্লিক করে রিপোর্টের বিস্তারিত দেখুন।</p></div><button class="btn btn-light" id="locateBtn">◎ আমার এলাকা</button></div>
+      <div class="map-wrap">
+        <div class="map-toolbar"><input id="mapSearch" placeholder="🔍  ঠিকানা, এলাকা"/><div class="legend"><span><i class="dot red-dot"></i> রাস্তা</span><span><i class="dot orange-dot"></i> ড্রেন</span><span><i class="dot blue-dot"></i> আলো</span><span><i class="dot green-dot"></i> অন্যান্য</span></div></div>
+        <div class="fake-map" id="fakeMap" aria-label="ইন্টার‌্যাক্টিভ সমস্যা ম্যাপ">
+          <div class="river"></div><div class="map-label l1">Nimgachi</div><div class="map-label l2">Sirajganj</div><div class="map-label l3">Erabaria</div><div class="map-label l4">Chandpur</div>
+          <div class="map-road r1"></div><div class="map-road r2"></div><div class="map-road r3"></div><div class="map-road r4"></div>
+        </div>
+      </div>
+      <div class="category-row"><button data-filter="রাস্তা">🚧<b>রাস্তা</b><small>45টি</small></button><button data-filter="ড্রেন">▦<b>ড্রেন</b><small>29টি</small></button><button data-filter="আলো">💡<b>আলো</b><small>12টি</small></button><button data-filter="অন্যান্য">📍<b>অন্যান্য</b><small>18টি</small></button><button data-filter="সব">✦<b>সব সমস্যা</b><small>128টি</small></button></div>
+    </section>
+
+    <section class="section-pad split" id="report">
+      <div class="card form-card">
+        <div class="section-head"><div><span class="eyebrow">নাগরিক অংশগ্রহণ</span><h2>সমস্যা রিপোর্ট করুন</h2><p>আপনার এলাকার সমস্যা আমাদের জানান।</p></div></div>
+        <form id="reportForm" novalidate>
+          <label>সমস্যার শিরোনাম *<input id="title" required placeholder="যেমন: নিমগাছী-সিরাজগঞ্জ সড়ক"/></label>
+          <label>সমস্যার ধরন *<select id="type" required><option value="">নির্বাচন করুন</option><option>রাস্তা</option><option>ড্রেন</option><option>আলো</option><option>ব্রিজ</option><option>পানি</option><option>অন্যান্য</option></select></label>
+          <label>বিস্তারিত *<textarea id="description" required rows="4" placeholder="সমস্যাটি কোথায় এবং কী ধরনের—সংক্ষেপে লিখুন"></textarea></label>
+          <div class="upload-grid"><label class="upload-box">📷<b>ছবি যোগ করুন</b><small>JPG/PNG • সর্বোচ্চ ৫MB</small><input type="file" id="photo" accept="image/*" hidden/></label><label class="upload-box">🎥<b>ভিডিও যোগ করুন</b><small>ঐচ্ছিক • সর্বোচ্চ ২০MB</small><input type="file" id="video" accept="video/*" hidden/></label></div>
+          <label>লোকেশন *<input id="location" required placeholder="যেমন: Nimgachi, Sirajganj"/></label>
+          <label>যোগাযোগ (ঐচ্ছিক)<input id="contact" placeholder="মোবাইল / ইমেইল"></label>
+          <button class="btn btn-primary full" type="submit">রিপোর্ট জমা দিন</button>
+        </form>
+      </div>
+      <aside class="card tips-card"><span class="tip-icon">💡</span><h3>ভালো রিপোর্টের টিপস</h3><ul><li>সমস্যার সঠিক লোকেশন দিন।</li><li>দিনের আলোতে পরিষ্কার ছবি দিন।</li><li>কতদিন ধরে সমস্যা আছে লিখুন।</li><li>একটি রিপোর্টে একটি সমস্যা রাখুন।</li></ul><div class="privacy-note">🔒 আপনার তথ্য শুধুমাত্র রিপোর্ট যাচাইয়ের কাজে ব্যবহার করা হবে।</div></aside>
+    </section>
+
+    <section class="section-pad" id="stats">
+      <div class="section-head"><div><span class="eyebrow">ডেটা ও স্বচ্ছতা</span><h2>পরিসংখ্যান</h2><p>রিপোর্টের অবস্থা এক নজরে দেখুন।</p></div></div>
+      <div class="stats-grid"><div class="card donut-card"><h3>সমস্যার ধরন অনুযায়ী</h3><div class="donut"><span>128<small>মোট সমস্যা</small></span></div><div class="chart-legend"><span>🔴 রাস্তা <b>45 (35%)</b></span><span>🟠 ড্রেন <b>29 (23%)</b></span><span>🔵 আলো <b>12 (9%)</b></span><span>🟢 ব্রিজ <b>18 (14%)</b></span><span>🟣 অন্যান্য <b>24 (19%)</b></span></div></div><div class="card activity-card"><h3>সাম্প্রতিক রিপোর্ট</h3><div id="activityList"></div></div><div class="card progress-card"><h3>সমাধানের অগ্রগতি</h3><div class="progress-item"><span>সমাধান হয়েছে</span><b>47</b><div><i style="width:37%"></i></div></div><div class="progress-item"><span>কাজ চলছে</span><b>18</b><div><i style="width:14%"></i></div></div><div class="progress-item"><span>যাচাই হচ্ছে</span><b>23</b><div><i style="width:18%"></i></div></div></div></div>
+    </section>
+
+    <section class="section-pad report-table-section" id="all"><div class="section-head"><div><span class="eyebrow">ট্র্যাক করুন</span><h2>আমার রিপোর্টসমূহ</h2></div><button class="btn btn-light" id="clearReports">লোকাল রিপোর্ট মুছুন</button></div><div class="table-wrap"><table><thead><tr><th>শিরোনাম</th><th>ধরন</th><th>লোকেশন</th><th>তারিখ</th><th>স্ট্যাটাস</th></tr></thead><tbody id="reportTable"></tbody></table></div></section>
+
+    <section class="cta section-pad" id="about"><div><span class="eyebrow">একসাথে বদলাই</span><h2>একটি ভালো রাস্তা,<br>একটি ভালো আগামীকাল</h2><p>আপনার ছোট একটি রিপোর্টও এলাকার পরিবর্তনের শুরু হতে পারে।</p></div><a class="btn btn-primary" href="#report">এখনই রিপোর্ট করুন →</a></section>
+  </main>
+
+  <footer><div class="footer-brand"><span class="brand-mark">📍</span><div><strong>Amader Rasta</strong><small>Better Road, Better Tomorrow</small></div></div><div class="footer-links"><a href="#home">হোম</a><a href="#problems">সমস্যা</a><a href="#map">ম্যাপ</a><a href="#report">রিপোর্ট</a><a href="#stats">পরিসংখ্যান</a><a href="#about">সম্পর্কে</a></div><div class="socials">●　▶　◎　◉</div><p>© 2026 Amader Rasta. All rights reserved.</p></footer>
+
+  <div class="modal" id="detailModal" aria-hidden="true"><div class="modal-box"><button class="modal-close" data-close>×</button><div id="modalContent"></div></div></div>
+  <div class="modal" id="profileModal" aria-hidden="true"><div class="modal-box small-modal"><button class="modal-close" data-close>×</button><h2>আমার প্রোফাইল</h2><p>এই ডেমোতে লগইন ছাড়াই রিপোর্ট ব্রাউজারে সংরক্ষণ হয়।</p><button class="btn btn-primary full" data-close>ঠিক আছে</button></div></div>
+  <div class="search-overlay" id="searchOverlay"><div class="search-box"><button class="modal-close" id="searchClose">×</button><h2>সমস্যা খুঁজুন</h2><input id="globalSearch" placeholder="রাস্তা, লোকেশন বা ধরন লিখুন…" autofocus/><div id="searchResults"></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
